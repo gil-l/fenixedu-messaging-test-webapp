@@ -52,9 +52,6 @@ public class MockEmailMessageDispatchReport extends MockEmailMessageDispatchRepo
 
     public MockEmailMessageDispatchReport(int nMails) {
         super();
-        setDeliveredCount(0);
-        setInvalidCount(0);
-        setFailedCount(0);
         setTotalCount(nMails);
         new SendingThread(nMails, this).start();
     }

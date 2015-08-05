@@ -42,6 +42,7 @@ public class CreateSenderTask extends CustomTask {
             b.cc(allUsers);
             b.to(userGroup);
             b.replyTo(ReplyTo.user(user));
+            b.send();
         }
     }
 }
