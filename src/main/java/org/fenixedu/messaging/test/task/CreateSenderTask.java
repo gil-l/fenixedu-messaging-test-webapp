@@ -6,10 +6,13 @@ import java.util.Set;
 import org.fenixedu.bennu.core.domain.Bennu;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.domain.UserProfile;
+import org.fenixedu.bennu.core.groups.DynamicGroup;
 import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.bennu.core.groups.UserGroup;
+import org.fenixedu.bennu.core.security.Authenticate;
 import org.fenixedu.bennu.scheduler.annotation.Task;
 import org.fenixedu.bennu.scheduler.custom.CustomTask;
+import org.fenixedu.commons.i18n.I18N;
 import org.fenixedu.messaging.domain.Message.MessageBuilder;
 import org.fenixedu.messaging.domain.MessageDeletionPolicy;
 import org.fenixedu.messaging.domain.ReplyTo;
@@ -19,6 +22,7 @@ import org.fenixedu.messaging.domain.Sender;
 public class CreateSenderTask extends CustomTask {
     @Override
     public void runTask() throws Exception {
+        Authenticate.mock(DynamicGroup.get("managers").getMembers().iterator().next());
         Set<User> users = Bennu.getInstance().getUserSet();
         boolean htmlSender = true;
         Group allUsers = UserGroup.of(users);
@@ -36,7 +40,7 @@ public class CreateSenderTask extends CustomTask {
             sender.addRecipient(allUsers);
             MessageBuilder b =
                     new MessageBuilder(sender, "An Example Message", "My name is Commander " + profile.getFamilyNames()
-                            + " and this is my favourite application in Fenix.");
+                            + " and this is my favourite application in Fenix.", I18N.getLocale());
             b.bcc("one@test.com");
             b.bcc("two@test.com");
             b.cc(allUsers);
