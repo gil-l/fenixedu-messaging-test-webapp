@@ -1,5 +1,8 @@
-/target
+target
 .classpath
 .project
 .settings
+.idea
+*.iml
+src/main/resources/fenix-framework.properties
 

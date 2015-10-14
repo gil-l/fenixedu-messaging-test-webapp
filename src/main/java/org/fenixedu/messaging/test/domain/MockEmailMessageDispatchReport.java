@@ -1,9 +1,9 @@
 package org.fenixedu.messaging.test.domain;
 
-import static pt.ist.fenixframework.FenixFramework.atomic;
-
-import org.fenixedu.messaging.domain.MessageDispatchReport;
+import org.fenixedu.messaging.core.domain.MessageDispatchReport;
 import org.joda.time.DateTime;
+
+import static pt.ist.fenixframework.FenixFramework.atomic;
 
 public class MockEmailMessageDispatchReport extends MockEmailMessageDispatchReport_Base {
 

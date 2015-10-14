@@ -1,12 +1,12 @@
 package org.fenixedu.messaging.test.mock;
 
+import org.fenixedu.messaging.core.dispatch.MessageDispatcher;
+import org.fenixedu.messaging.core.domain.MessageDispatchReport;
+import org.fenixedu.messaging.core.domain.Message;
+import org.fenixedu.messaging.test.domain.MockEmailMessageDispatchReport;
+
 import java.util.HashSet;
 import java.util.Set;
-
-import org.fenixedu.messaging.domain.Message;
-import org.fenixedu.messaging.domain.MessageDispatchReport;
-import org.fenixedu.messaging.domain.MessageDispatcher;
-import org.fenixedu.messaging.test.domain.MockEmailMessageDispatchReport;
 
 public class MockDispatcher implements MessageDispatcher {
 
